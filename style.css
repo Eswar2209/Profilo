@@ -1,0 +1,135 @@
+body{
+font-family:Arial;
+margin:0;
+background:#111;
+color:white;
+text-align:center;
+}
+
+/* HEADER */
+header{
+background:#000;
+padding:30px;
+}
+
+.profile-img{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #00adb5;
+}
+
+/* NAV */
+nav{
+background:#222;
+padding:15px;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* PAGE SWITCH */
+.page{
+display:none;
+padding:50px;
+margin:20px;
+background:#1c1c1c;
+border-radius:10px;
+}
+
+.page.active{
+display:block;
+animation:fadeIn .6s;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* ROUND PHOTO */
+.section-img{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+margin:20px auto;
+border:4px solid #00adb5;
+box-shadow:0 0 20px #00adb5;
+}
+
+/* SKILLS STEP DOWN */
+.skills-container{
+max-width:420px;
+margin:auto;
+}
+
+.skill{
+display:flex;
+align-items:center;
+gap:15px;
+background:#333;
+padding:15px;
+margin:15px 0;
+border-radius:8px;
+
+opacity:0;
+transform:translateY(30px);
+transition:.6s;
+}
+
+.skill img{
+width:40px;
+}
+
+.skill.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* PROJECTS */
+.card{
+background:#333;
+padding:20px;
+margin:20px;
+border-radius:10px;
+}
+
+.project-img{
+width:100%;
+border-radius:10px;
+}
+
+.project-btn{
+display:inline-block;
+margin-top:12px;
+padding:10px 18px;
+background:#00adb5;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+transition:.3s;
+}
+
+.project-btn:hover{
+background:#008c92;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+background:black;
+padding:20px;
+}
+
+.typing-text{
+font-size:18px;
+margin-top:10px;
+}
