@@ -1,139 +1,404 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eswar Kethavarapu | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-<img src="eswar.png" class="profile-img">
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
 
-<h1 id="typing-name"></h1>
-<p class="typing-text"><span id="typing-role"></span></p>
+<!-- Particle Canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Header -->
+<header id="header">
+  <div class="header-inner">
+    <div class="profile-wrapper">
+      <div class="profile-ring ring1"></div>
+      <div class="profile-ring ring2"></div>
+      <div class="profile-ring ring3"></div>
+      <img src="eswar.png" class="profile-img" alt="Eswar Kethavarapu">
+      <div class="profile-glow"></div>
+    </div>
+    <div class="header-text">
+      <h1 id="typing-name" class="glitch-name"></h1>
+      <p class="typing-subtitle"><span id="typing-role"></span><span class="cursor-blink">|</span></p>
+      <div class="social-links">
+        <a href="https://github.com/Eswar2209" target="_blank" class="social-btn github">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/eswar-kethavarapu-433b71347/" target="_blank" class="social-btn linkedin">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://leetcode.com/u/EswarKethavarapu/" target="_blank" class="social-btn leetcode">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513v.542c0 5.221 4.405 9.403 9.84 9.403a9.84 9.84 0 0 0 9.84-9.403 5.35 5.35 0 0 0-.125-.542 5.266 5.266 0 0 0-1.209-2.104L15.384 6.226 13.483.438A1.374 1.374 0 0 0 13.483 0zM6.388 16.469a1.374 1.374 0 0 1-.987-.702 1.375 1.375 0 0 1 .247-1.444 1.374 1.374 0 0 1 1.443-.247 1.375 1.375 0 0 1 .702.987 1.374 1.374 0 0 1-.702.987 1.375 1.375 0 0 1-.703.419zm7.595 0a1.374 1.374 0 0 1-.987-.702 1.375 1.375 0 0 1 .247-1.444 1.374 1.374 0 0 1 1.443-.247 1.375 1.375 0 0 1 .702.987 1.374 1.374 0 0 1-.702.987 1.375 1.375 0 0 1-.703.419z"/></svg>
+          LeetCode
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#about" class="nav-link active" data-section="about">
+      <span class="nav-icon">◈</span> About
+    </a>
+    <a href="#education" class="nav-link" data-section="education">
+      <span class="nav-icon">◈</span> Education
+    </a>
+    <a href="#skills" class="nav-link" data-section="skills">
+      <span class="nav-icon">◈</span> Skills
+    </a>
+    <a href="#projects" class="nav-link" data-section="projects">
+      <span class="nav-icon">◈</span> Projects
+    </a>
+    <a href="#contact" class="nav-link" data-section="contact">
+      <span class="nav-icon">◈</span> Contact
+    </a>
+  </div>
+  <div class="nav-progress"></div>
 </nav>
 
+<!-- Sections -->
+<main>
+
+<!-- About -->
 <section id="about" class="page active">
-
-<h2>About Me</h2>
-
-<img src="eswar.png" class="section-img">
-
-<p>
-Hello! I am <b>Eswar Kethavarapu</b>, a B.Tech CSE (AI-ML) student and aspiring
-<b>AI-ML Engineer & Frontend Developer</b>.
-I enjoy building intelligent systems and modern web applications.
-</p>
-
-<p>📍 Vaghodia, Gujarat, India</p>
-
+  <div class="section-header">
+    <h2 class="section-title"><span class="title-accent">01.</span> About Me</h2>
+    <div class="title-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-side">
+      <div class="about-photo-frame">
+        <img src="eswar.png" alt="Eswar" class="about-img">
+        <div class="photo-border"></div>
+        <div class="photo-corner tl"></div>
+        <div class="photo-corner tr"></div>
+        <div class="photo-corner bl"></div>
+        <div class="photo-corner br"></div>
+      </div>
+    </div>
+    <div class="about-text-side">
+      <p class="about-intro">Hello! I'm <span class="highlight">Eswar Kethavarapu</span> — a passionate B.Tech CSE (AI-ML) student at Parul University, Gujarat.</p>
+      <p class="about-desc">I build intelligent systems and modern web applications as an aspiring <span class="highlight">AI-ML Engineer & Python Full Stack Developer</span>. I love turning ideas into elegant, real-world solutions.</p>
+      <div class="info-tags">
+        <span class="tag">📍 Vaghodia, Gujarat, India</span>
+        <span class="tag">🎓 B.Tech CSE AI-ML</span>
+        <span class="tag">💡 Open to Opportunities</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- Education -->
+<section id="education" class="page">
+  <div class="section-header">
+    <h2 class="section-title"><span class="title-accent">02.</span> Education</h2>
+    <div class="title-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item" data-delay="0">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-content">
+          <h3>B.Tech — Computer Science Engineering</h3>
+          <h4 class="edu-spec">Specialization: Artificial Intelligence & Machine Learning</h4>
+          <p class="edu-institute">Parul University, Vadodara, Gujarat</p>
+          <span class="edu-year">2024 – 2028</span>
+          <p class="edu-cgpa">CGPA: 8.67</p>
+          <p class="edu-desc">Pursuing a comprehensive curriculum covering Machine Learning, Deep Learning, Python Development, Data Structures & Algorithms, and Full Stack Web Development.</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item" data-delay="200">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="edu-icon">🏫</div>
+        <div class="edu-content">
+          <h3>Higher Secondary Education (12th)</h3>
+          <h4 class="edu-spec">Stream: MPC (Maths, Physics, Chemistry)</h4>
+          <p class="edu-institute">SR EDUCATIONAL ACADAMEY</p>
+          <span class="edu-year">2022 – 2024</span>
+          <p class="edu-percentage">Percentage: 70.8%</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item" data-delay="400">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="edu-icon">📚</div>
+        <div class="edu-content">
+          <h3>Secondary Education (10th)</h3>
+          <p class="edu-institute">Andhra Pradesh Residential Schools (Bobbili)</p>
+          <span class="edu-year">2016 – 2022</span>
+          <p class="edu-percentage">Percentage: 79.2%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
 <section id="skills" class="page">
-
-<h2>Skills</h2>
-
-<div class="skills-container">
-
-<div class="skill">
-<p>Python Programming</p>
-</div>
-
-<div class="skill">
-<p>Frontend Development (HTML, CSS, JS)</p>
-</div>
-
-<div class="skill">
-<p>Machine Learning</p>
-</div>
-
-<div class="skill">
-<p>Git & GitHub</p>
-</div>
-
-<div class="skill">
-<p>Data Structures & Algorithms</p>
-</div>
-
-</div>
-
+  <div class="section-header">
+    <h2 class="section-title"><span class="title-accent">03.</span> Skills</h2>
+    <div class="title-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card" data-color="#00f7ff">
+      <div class="skill-icon">🐍</div>
+      <h3>Python Programming</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card" data-color="#ff5cff">
+      <div class="skill-icon">🌐</div>
+      <h3>Python Full Stack Dev</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card" data-color="#6cff77">
+      <div class="skill-icon">🤖</div>
+      <h3>Machine Learning</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card" data-color="#ffd700">
+      <div class="skill-icon">🔧</div>
+      <h3>Git & GitHub</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card" data-color="#ff7043">
+      <div class="skill-icon">📊</div>
+      <h3>Data Structures & Algorithms</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="78%"></div></div>
+      <span class="skill-level">Proficient</span>
+    </div>
+    <div class="skill-card" data-color="#ab47bc">
+      <div class="skill-icon">🎨</div>
+      <h3>HTML / CSS / JavaScript</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+      <span class="skill-level">Advanced</span>
+    </div>
+    <div class="skill-card" data-color="#ff4500">
+      <div class="skill-icon">💻</div>
+      <h3>C Programming</h3>
+      <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+      <span class="skill-level">Proficient</span>
+    </div>
+  </div>
 </section>
 
+<!-- Projects -->
 <section id="projects" class="page">
+  <div class="section-header">
+    <h2 class="section-title"><span class="title-accent">04.</span> Projects</h2>
+    <div class="title-line"></div>
+  </div>
+  <p class="section-subtitle">High-impact projects with polished UI and real-world functionality.</p>
 
-<h2>Projects</h2>
+  <div class="projects-category">
+    <h3 class="category-title">Frontend Projects</h3>
+    <div class="projects-grid">
 
-<div class="card">
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">01</div>
+        <div class="project-emoji">🏨</div>
+        <h3>Hotel Booking Management</h3>
+        <p>Luxury hotel reservation system with room selection, price calculation, booking statistics and modern UI. Built using HTML, CSS & JavaScript.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://69aff72ffd52bdb1514d1947--radiant-seahorse-ed20d5.netlify.app/" target="_blank" class="project-btn">
+          Live Demo <span>→</span>
+        </a>
+      </div>
 
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">02</div>
+        <div class="project-emoji">🎫</div>
+        <h3>Online Ticket Booking System</h3>
+        <p>Comprehensive online ticket booking platform with seat selection, payment integration, and user-friendly interface for events and travel.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <span class="project-btn inactive">Coming Soon</span>
+      </div>
 
-<h3>Hotel Booking Management System</h3>
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">03</div>
+        <div class="project-emoji">🔊</div>
+        <h3>Safe to Hear</h3>
+        <p>An interactive web application for hearing safety awareness, featuring educational content, quizzes, and audio level monitoring tools.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <span class="project-btn inactive">Coming Soon</span>
+      </div>
 
-<p>
-Luxury hotel reservation system with room selection, price calculation,
-booking statistics and modern UI built using HTML, CSS and JavaScript.
-</p>
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">04</div>
+        <div class="project-emoji">🌦️</div>
+        <h3>Weather App</h3>
+        <p>Real-time weather application with live API integration, displaying temperature, humidity, wind speed and forecasts beautifully.</p>
+        <div class="project-tags">
+          <span>JavaScript</span><span>API</span><span>CSS</span>
+        </div>
+        <a href="https://weatherapp-iota-green.vercel.app/" target="_blank" class="project-btn">
+          Live Demo <span>→</span>
+        </a>
+      </div>
 
-<a href="https://69aff72ffd52bdb1514d1947--radiant-seahorse-ed20d5.netlify.app/"
-target="_blank"
-class="project-btn">
-🏨 Live Demo </a>
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">05</div>
+        <div class="project-emoji">💼</div>
+        <h3>Portfolio Website</h3>
+        <p>This personal portfolio — featuring 3D animations, particle canvas, custom cursor effects and smooth section transitions.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <span class="project-btn inactive">You're viewing it!</span>
+      </div>
 
-</div>
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">06</div>
+        <div class="project-emoji">🏖️</div>
+        <h3>Tourism Website</h3>
+        <p>Interactive tourism website showcasing destinations, travel packages, booking system, and stunning visuals for an immersive travel experience.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <span class="project-btn inactive">Coming Soon</span>
+      </div>
 
-<div class="card">
+    </div>
+  </div>
 
+  <div class="projects-category">
+    <h3 class="category-title">Fullstack Projects</h3>
+    <div class="projects-grid">
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">01</div>
+        <div class="project-emoji">🔧</div>
+        <h3>API Development</h3>
+        <p>RESTful API development with Python Flask/Django, featuring authentication, database integration, and scalable architecture.</p>
+        <div class="project-tags">
+          <span>Python</span><span>Flask</span><span>PostgreSQL</span>
+        </div>
+        <span class="project-btn inactive">In Development</span>
+      </div>
 
-<h3>Weather App</h3>
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">02</div>
+        <div class="project-emoji">🍔</div>
+        <h3>Online Food Delivery</h3>
+        <p>Modern food delivery platform with user ordering, restaurant menus, real-time order tracking, and seamless payment flows powered by a Flask backend and responsive frontend.</p>
+        <div class="project-tags">
+          <span>Python</span><span>Flask</span><span>Stripe</span>
+        </div>
+        <span class="project-btn inactive">Coming Soon</span>
+      </div>
 
-<p>Real-time weather application using API integration.</p>
-
-<a href="https://weatherapp-iota-green.vercel.app/"
-target="_blank"
-class="project-btn">
-🌦 Live Demo </a>
-
-</div>
-
-<div class="card">
-
-<img src="images/portfolio-project.jpg" class="project-img">
-
-<h3>Portfolio Website</h3>
-
-<p>Personal portfolio using HTML, CSS and JavaScript.</p>
-
-</div>
-
+      <div class="project-card" data-tilt>
+        <div class="project-glow"></div>
+        <div class="project-number">03</div>
+        <div class="project-emoji">🤖</div>
+        <h3>AI Chat Application</h3>
+        <p>Smart conversational assistant built with AI-driven NLP, delivering context-aware responses, chat history, and a scalable backend for intelligent user interactions.</p>
+        <div class="project-tags">
+          <span>Python</span><span>AI</span><span>FastAPI</span>
+        </div>
+        <span class="project-btn inactive">In Development</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- Contact -->
 <section id="contact" class="page">
-
-<h2>Contact</h2>
-
-<img src="eswar.png" class="section-img">
-
-<p>Email: eswarkethavarapu9@gmail.com</p>
-<p>Phone: 7386063201</p>
-<p>Address: Parul University Gujarat, India</p>
-
+  <div class="section-header">
+    <h2 class="section-title"><span class="title-accent">05.</span> Contact</h2>
+    <div class="title-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-photo-side">
+      <div class="contact-frame">
+        <img src="eswar.png" alt="Eswar" class="contact-img">
+        <div class="contact-ring"></div>
+      </div>
+    </div>
+    <div class="contact-info-side">
+      <p class="contact-intro">Let's connect and build something amazing together!</p>
+      <div class="contact-items">
+        <a href="mailto:eswarkethavarapu9@gmail.com" class="contact-item">
+          <span class="contact-icon">📧</span>
+          <span>eswarkethavarapu9@gmail.com</span>
+        </a>
+        <a href="tel:7386063201" class="contact-item">
+          <span class="contact-icon">📞</span>
+          <span>+91 7386063201</span>
+        </a>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <span>Parul University, Vadodara, Gujarat, India</span>
+        </div>
+        <a href="https://github.com/Eswar2209" target="_blank" class="contact-item">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </span>
+          <span>github.com/Eswar2209</span>
+        </a>
+        <a href="https://www.linkedin.com/in/eswar-kethavarapu-433b71347/" target="_blank" class="contact-item">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </span>
+          <span>linkedin.com/in/eswar-kethavarapu-433b71347</span>
+        </a>
+        <a href="https://leetcode.com/u/EswarKethavarapu/" target="_blank" class="contact-item">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513v.542c0 5.221 4.405 9.403 9.84 9.403a9.84 9.84 0 0 0 9.84-9.403 5.35 5.35 0 0 0-.125-.542 5.266 5.266 0 0 0-1.209-2.104L15.384 6.226 13.483.438A1.374 1.374 0 0 0 13.483 0zM6.388 16.469a1.374 1.374 0 0 1-.987-.702 1.375 1.375 0 0 1 .247-1.444 1.374 1.374 0 0 1 1.443-.247 1.375 1.375 0 0 1 .702.987 1.374 1.374 0 0 1-.702.987 1.375 1.375 0 0 1-.703.419zm7.595 0a1.374 1.374 0 0 1-.987-.702 1.375 1.375 0 0 1 .247-1.444 1.374 1.374 0 0 1 1.443-.247 1.375 1.375 0 0 1 .702.987 1.374 1.374 0 0 1-.702.987 1.375 1.375 0 0 1-.703.419z"/></svg>
+          </span>
+          <span>leetcode.com/u/EswarKethavarapu</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
+
+</main>
 
 <footer>
-<p>© 2026 Eswar Kethavarapu</p>
+  <div class="footer-inner">
+    <p>© 2026 <span class="highlight">Eswar Kethavarapu</span> — Crafted with ❤️ & Code</p>
+    <div class="footer-links">
+      <a href="https://github.com/Eswar2209" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/eswar-kethavarapu-433b71347/" target="_blank">LinkedIn</a>
+      <a href="https://leetcode.com/u/EswarKethavarapu/" target="_blank">LeetCode</a>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
